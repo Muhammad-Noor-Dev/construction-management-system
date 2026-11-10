@@ -1,0 +1,24 @@
+const service=require("../services/completionService");
+const ok=(res,data,message="Success")=>res.status(200).json({success:true,message,data});
+const bad=(res,e)=>res.status(400).json({success:false,message:e.message});
+const id=(v)=>{const x=Number(v);if(!Number.isInteger(x)||x<=0)throw new Error("Invalid ID");return x;};
+exports.clientStatement=async(req,res)=>{try{return ok(res,await service.clientStatement(id(req.params.id)));}catch(e){return bad(res,e)}};
+exports.contractorStatement=async(req,res)=>{try{return ok(res,await service.contractorStatement(id(req.params.id)));}catch(e){return bad(res,e)}};
+exports.createInvoice=async(req,res)=>{try{return res.status(201).json({success:true,message:"Invoice created successfully",data:await service.createInvoice(req.body,req.user.userId)});}catch(e){return bad(res,e)}};
+exports.recordClientPayment=async(req,res)=>{try{return res.status(201).json({success:true,message:"Client payment recorded successfully",data:await service.recordClientPayment(req.body,req.user.userId)});}catch(e){return bad(res,e)}};
+exports.approveIssuance=async(req,res)=>{try{return ok(res,await service.approveIssuance(id(req.params.id),req.user.userId),"Issuance approved and stock deducted");}catch(e){return bad(res,e)}};
+exports.rejectIssuance=async(req,res)=>{try{return ok(res,await service.rejectIssuance(id(req.params.id),req.user.userId,req.body.rejectionReason),"Issuance rejected");}catch(e){return bad(res,e)}};
+exports.receiveMaterial=async(req,res)=>{try{return res.status(201).json({success:true,message:"Material received and stock updated",data:await service.receiveMaterial(req.body,req.user.userId)});}catch(e){return bad(res,e)}};
+exports.damageMaterial=async(req,res)=>{try{return res.status(201).json({success:true,message:"Damage recorded and stock updated",data:await service.damageMaterial(req.body,req.user.userId)});}catch(e){return bad(res,e)}};
+exports.lowStock=async(req,res)=>{try{return ok(res,await service.lowStock());}catch(e){return bad(res,e)}};
+exports.projectReport=async(req,res)=>{try{return ok(res,await service.projectReport());}catch(e){return bad(res,e)}};
+exports.financialReport=async(req,res)=>{try{return ok(res,await service.financialReport());}catch(e){return bad(res,e)}};
+exports.materialReport=async(req,res)=>{try{return ok(res,await service.materialReport());}catch(e){return bad(res,e)}};
+exports.payrollReport=async(req,res)=>{try{return ok(res,await service.payrollReport());}catch(e){return bad(res,e)}};
+exports.dashboard=async(req,res)=>{try{return ok(res,await service.dashboard());}catch(e){return bad(res,e)}};
+exports.siteConsumption=async(req,res)=>{try{return ok(res,await service.siteConsumption(id(req.params.id)));}catch(e){return bad(res,e)}};
+exports.generatePayroll=async(req,res)=>{try{const year=Number(req.body.year),month=Number(req.body.month);if(!Number.isInteger(year)||year<2000||!Number.isInteger(month)||month<1||month>12)throw new Error("Valid year and month are required");return ok(res,await service.generatePayroll(year,month,req.user.userId),"Payroll generated");}catch(e){return bad(res,e)}};
+
+exports.approvePayroll=async(req,res)=>{try{return ok(res,await service.approvePayroll(id(req.params.id),req.user.userId),"Payroll approved");}catch(e){return bad(res,e)}};
+exports.payPayroll=async(req,res)=>{try{return ok(res,await service.payPayroll(id(req.params.id)),"Payroll paid and payslips generated");}catch(e){return bad(res,e)}};
+exports.wasteMaterial=async(req,res)=>{try{return res.status(201).json({success:true,message:"Waste recorded and stock updated",data:await service.wasteMaterial(req.body,req.user.userId)});}catch(e){return bad(res,e)}};

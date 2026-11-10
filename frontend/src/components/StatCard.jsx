@@ -1,0 +1,12 @@
+export default function StatCard({ icon: Icon, label, value, sub }) {
+  return <div className="stat-card">
+    <div className="stat-icon">
+      <Icon size={20} />
+    </div>
+    <div>
+      <span>{label}</span>
+      <strong>{value}</strong>
+      <small>{sub}</small>
+    </div>
+  </div>
+}

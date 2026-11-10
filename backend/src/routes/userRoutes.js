@@ -1,0 +1,13 @@
+const express=require("express");
+const controller=require("../controllers/userController");
+const validate=require("../middleware/validate");
+const authenticate=require("../middleware/authMiddleware");
+const authorizeRoles=require("../middleware/authorizeRole");
+const {createUserSchema,updateUserSchema,changePasswordSchema}=require("../validators/userValidator");
+const router=express.Router();router.use(authenticate,authorizeRoles("Admin"));
+router.get("/",controller.getAllUsers);router.get("/:id",controller.getUserById);
+router.post("/",validate(createUserSchema),controller.createUser);
+router.put("/:id",validate(updateUserSchema),controller.updateUser);
+router.patch("/:id/password",validate(changePasswordSchema),controller.changePassword);
+router.patch("/:id/deactivate",controller.deactivateUser);
+module.exports=router;
