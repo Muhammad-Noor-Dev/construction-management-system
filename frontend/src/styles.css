@@ -156,3 +156,71 @@
 .pending-material-banner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 18px;border:1px solid #f4d08a;border-radius:14px;background:#fffaeb;color:#7a4d00}.pending-material-banner div{display:flex;flex-direction:column;gap:4px}.pending-material-banner span{font-size:13px;color:#8a5a08}.pending-material-banner .primary{white-space:nowrap}@media(max-width:640px){.pending-material-banner{align-items:flex-start;flex-direction:column}}
 
 .payroll-approval-guidance{margin:14px 0}
+
+/* Revision 5: comfortable, responsive typography for everyday business users. */
+html { font-size: 16px; }
+body { font-size: clamp(15px, 0.25vw + 14px, 16px); line-height: 1.5; }
+.nav-title { font-size: 11px; }
+.nav-item { font-size: 14px; min-height: 46px; height: auto; }
+.user-meta b { font-size: 13px; }
+.user-meta span { font-size: 11px; }
+.eyebrow { font-size: 11px; }
+.muted { font-size: 14px; line-height: 1.55; }
+.primary, .secondary { min-height: 44px; height: auto; padding: 10px 16px; font-size: 14px; }
+.stat-card span { font-size: 13px; }
+.stat-card small { font-size: 12px; }
+.stat-card strong { font-size: clamp(25px, 2vw, 30px); }
+.quick-grid span { font-size: 14px; }
+.project-main b { font-size: 14px; }
+.project-main span { font-size: 12px; }
+.project-row { min-height: 62px; }
+.page-head h2, .welcome h2 { font-size: clamp(27px, 2.2vw, 32px); }
+.panel h3 { font-size: 19px; }
+table { font-size: 14px; }
+th { font-size: 11px; padding: 14px 16px; }
+td { font-size: 14px; padding: 14px 16px; }
+label { font-size: 13px; }
+label input, label textarea, label select { font-size: 14px; min-height: 42px; }
+.error { font-size: 14px; line-height: 1.5; }
+.text-btn { font-size: 14px; }
+.dashboard-date { font-size: 14px; }
+.dashboard-alert span, .approval-main span, .approval-main small { font-size: 14px; }
+.dashboard-empty { font-size: 14px; }
+.count-pill { font-size: 13px; }
+.attendance-choice button { font-size: 14px; min-height: 40px; }
+.attendance-person-info span { font-size: 13px; }
+.payroll-generate-controls label { font-size: 13px; }
+.payroll-process-note p, .info-callout { font-size: 14px; }
+@media (max-width: 900px) { .dashboard, .page { padding-left: 22px; padding-right: 22px; } }
+@media (max-width: 600px) { body { font-size: 15px; } .dashboard, .page { padding: 20px 14px 8px; } .topbar { padding: 0 14px; } .nav-item { font-size: 14px; } }
+
+/* Dashboard alerts are deliberately high-visibility emergency/warning red. */
+.dashboard-alert { background:#fff1f0; border-color:#f3b6b2; color:#7f1d1d; }
+.dashboard-alert svg { color:#c5221f; }
+.dashboard-alert b { color:#8f1d18; font-size:14px; }
+.dashboard-alert span { color:#8b302b; }
+.pending-material-banner { border:1px solid #e99b96; background:#fff0ef; color:#8f1d18; }
+.pending-material-banner span { color:#8b302b; }
+.pending-material-banner .primary { background:#b42318; box-shadow:0 5px 14px rgba(180,35,24,.18); }
+.pending-material-banner .primary:hover { background:#941b13; }
+
+/* Report charts: clear comparisons, trends and proportional views. */
+.report-visual { padding:20px; margin-bottom:16px; }
+.report-visual-head { display:flex; justify-content:space-between; align-items:flex-start; gap:18px; flex-wrap:wrap; margin-bottom:18px; }
+.report-visual-head h3 { margin:5px 0; }
+.report-visual-head .muted { margin:4px 0 0; }
+.report-view-switch { display:flex; gap:4px; padding:4px; background:#f2f4f7; border:1px solid var(--line); border-radius:11px; }
+.report-view-switch button { padding:9px 14px; min-height:40px; border-radius:8px; background:transparent; color:#596575; font-size:14px; font-weight:700; }
+.report-view-switch button.active { background:#fff; color:#a84a1d; box-shadow:0 1px 5px rgba(20,27,36,.12); }
+.report-graph-bars, .report-share-list { display:grid; gap:14px; }
+.report-graph-bar-row { display:grid; grid-template-columns:minmax(110px, 1.1fr) minmax(100px, 3fr) minmax(65px, auto); gap:12px; align-items:center; }
+.report-graph-bar-row > span { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:14px; font-weight:600; color:var(--ink); }
+.report-graph-bar-row b { text-align:right; font-size:14px; font-variant-numeric:tabular-nums; }
+.report-graph-track { height:13px; background:#edf0f3; border-radius:99px; overflow:hidden; }
+.report-graph-track i { display:block; height:100%; background:#d66b2d; border-radius:99px; min-width:2px; }
+.report-line-wrap { width:100%; overflow-x:auto; }
+.report-line-wrap svg { display:block; width:100%; min-width:440px; height:auto; color:#667085; }
+.report-line-wrap text { fill:currentColor; font-size:11px; }
+.report-chart-note { margin:18px 0 0; padding-top:12px; border-top:1px solid var(--line); color:var(--muted); font-size:13px; }
+.report-chart-empty { padding:18px; background:#f8fafc; border:1px solid var(--line); border-radius:10px; color:#596575; font-size:14px; }
+@media(max-width:650px) { .report-visual { padding:15px; } .report-graph-bar-row { grid-template-columns:minmax(75px,1fr) minmax(65px,1.3fr) minmax(55px,auto); gap:7px; } .report-graph-bar-row > span, .report-graph-bar-row b { font-size:12px; } .report-view-switch { width:100%; } .report-view-switch button { flex:1; } }
