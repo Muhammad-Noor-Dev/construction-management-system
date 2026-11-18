@@ -157,70 +157,388 @@
 
 .payroll-approval-guidance{margin:14px 0}
 
-/* Revision 5: comfortable, responsive typography for everyday business users. */
+/* Revision 5 accessibility and report visualisation improvements */
 html { font-size: 16px; }
-body { font-size: clamp(15px, 0.25vw + 14px, 16px); line-height: 1.5; }
-.nav-title { font-size: 11px; }
-.nav-item { font-size: 14px; min-height: 46px; height: auto; }
-.user-meta b { font-size: 13px; }
-.user-meta span { font-size: 11px; }
-.eyebrow { font-size: 11px; }
-.muted { font-size: 14px; line-height: 1.55; }
-.primary, .secondary { min-height: 44px; height: auto; padding: 10px 16px; font-size: 14px; }
-.stat-card span { font-size: 13px; }
-.stat-card small { font-size: 12px; }
-.stat-card strong { font-size: clamp(25px, 2vw, 30px); }
-.quick-grid span { font-size: 14px; }
-.project-main b { font-size: 14px; }
-.project-main span { font-size: 12px; }
-.project-row { min-height: 62px; }
-.page-head h2, .welcome h2 { font-size: clamp(27px, 2.2vw, 32px); }
-.panel h3 { font-size: 19px; }
+body { font-size: 16px; line-height: 1.55; }
+button, input, select, textarea { font: inherit; }
+button { min-height: 40px; }
+:where(button, a, input, select, textarea):focus-visible {
+  outline: 3px solid rgba(37, 99, 235, .55);
+  outline-offset: 2px;
+}
+.muted { font-size: 15px; line-height: 1.6; }
+.eyebrow { font-size: 12px; letter-spacing: .09em; }
+.nav-item { font-size: 14px; min-height: 46px; }
+.nav-title { font-size: 12px; }
+.user-meta b { font-size: 14px; }
+.user-meta span { font-size: 12px; }
+.topbar h1 { font-size: 23px; }
+.welcome h2, .page-head h2 { font-size: 30px; line-height: 1.25; }
+.panel h3 { font-size: 19px; line-height: 1.35; }
+.panel-head { gap: 18px; }
+.text-btn { font-size: 14px; min-height: 40px; }
+.primary, .secondary { font-size: 15px; min-height: 44px; }
+label { font-size: 14px; }
+input, select, textarea { font-size: 15px; min-height: 42px; }
 table { font-size: 14px; }
-th { font-size: 11px; padding: 14px 16px; }
-td { font-size: 14px; padding: 14px 16px; }
-label { font-size: 13px; }
-label input, label textarea, label select { font-size: 14px; min-height: 42px; }
-.error { font-size: 14px; line-height: 1.5; }
-.text-btn { font-size: 14px; }
-.dashboard-date { font-size: 14px; }
-.dashboard-alert span, .approval-main span, .approval-main small { font-size: 14px; }
-.dashboard-empty { font-size: 14px; }
-.count-pill { font-size: 13px; }
-.attendance-choice button { font-size: 14px; min-height: 40px; }
-.attendance-person-info span { font-size: 13px; }
-.payroll-generate-controls label { font-size: 13px; }
-.payroll-process-note p, .info-callout { font-size: 14px; }
-@media (max-width: 900px) { .dashboard, .page { padding-left: 22px; padding-right: 22px; } }
-@media (max-width: 600px) { body { font-size: 15px; } .dashboard, .page { padding: 20px 14px 8px; } .topbar { padding: 0 14px; } .nav-item { font-size: 14px; } }
+th { font-size: 13px; }
+td { font-size: 14px; }
+.loading, .empty { font-size: 15px; line-height: 1.6; padding: 26px 20px; }
+.error { font-size: 14px; line-height: 1.55; padding: 14px 17px; }
+.stat-card span { font-size: 14px; }
+.stat-card strong { font-size: 28px; }
+.stat-card small { font-size: 13px; }
+.quick-grid button span { font-size: 14px; line-height: 1.4; }
+.project-main b { font-size: 15px; }
+.project-main span { font-size: 13px; }
+.progress b { font-size: 13px; }
 
-/* Dashboard alerts are deliberately high-visibility emergency/warning red. */
-.dashboard-alert { background:#fff1f0; border-color:#f3b6b2; color:#7f1d1d; }
-.dashboard-alert svg { color:#c5221f; }
-.dashboard-alert b { color:#8f1d18; font-size:14px; }
-.dashboard-alert span { color:#8b302b; }
-.pending-material-banner { border:1px solid #e99b96; background:#fff0ef; color:#8f1d18; }
-.pending-material-banner span { color:#8b302b; }
-.pending-material-banner .primary { background:#b42318; box-shadow:0 5px 14px rgba(180,35,24,.18); }
-.pending-material-banner .primary:hover { background:#941b13; }
+/* More generous dashboard spacing: separate each major task area clearly. */
+.dashboard.dashboard-v2 {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.dashboard-v2 > .welcome-v2,
+.dashboard-v2 > .pending-material-banner,
+.dashboard-v2 > .stats-grid,
+.dashboard-v2 > .dashboard-grid-v2,
+.dashboard-v2 > .panel {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.dashboard-v2 .stats-grid { gap: 20px; }
+.dashboard-v2 .dashboard-grid-v2 {
+  gap: 22px;
+  align-items: stretch;
+}
+.dashboard-v2 .panel { min-width: 0; }
+.dashboard-v2 .panel-head { padding: 23px 25px 18px; }
+.dashboard-v2 .quick-grid-v2 { gap: 14px; padding: 20px 24px 24px; }
+.dashboard-v2 .quick-grid-v2 button { min-height: 66px; padding: 14px 16px; }
+.dashboard-v2 .dashboard-alert-list { padding: 8px 24px 20px; }
+.dashboard-v2 .dashboard-alert { padding: 15px 0; gap: 14px; }
+.dashboard-v2 .dashboard-alert b { font-size: 15px; }
+.dashboard-v2 .dashboard-alert span { font-size: 14px; line-height: 1.5; }
+.dashboard-v2 .dashboard-empty { padding: 24px; font-size: 15px; }
+.dashboard-v2 .approval-list { padding: 0 24px 22px; }
+.dashboard-v2 .approval-row { gap: 18px; padding: 19px 0; }
+.dashboard-v2 .approval-main b { font-size: 15px; }
+.dashboard-v2 .approval-main span { font-size: 14px; line-height: 1.5; }
+.dashboard-v2 .approval-main small { font-size: 13px; line-height: 1.5; }
+.dashboard-v2 .project-list { padding: 0 24px 18px; }
+.dashboard-v2 .project-row { min-height: 76px; padding: 13px 0; }
+.dashboard-v2 .activity-list { padding: 0 24px 20px; }
+.dashboard-v2 .activity-row { padding: 14px 0; font-size: 14px; }
+.dashboard-v2 .pending-material-banner { padding: 20px 24px; gap: 20px; }
+.dashboard-v2 .pending-material-banner b { font-size: 17px; }
+.dashboard-v2 .pending-material-banner span { font-size: 14px; line-height: 1.5; }
+.dashboard-v2 .welcome-v2 { padding: 27px 30px; gap: 22px; }
+.dashboard-v2 .welcome-v2 .muted { font-size: 16px; }
+.dashboard-v2 .dashboard-date { font-size: 14px; margin-top: 12px; }
+.dashboard-v2 .dashboard-attendance { padding: 24px 27px; gap: 22px; }
+.dashboard-v2 .dashboard-attendance h3 { font-size: 19px; }
 
-/* Report charts: clear comparisons, trends and proportional views. */
-.report-visual { padding:20px; margin-bottom:16px; }
-.report-visual-head { display:flex; justify-content:space-between; align-items:flex-start; gap:18px; flex-wrap:wrap; margin-bottom:18px; }
-.report-visual-head h3 { margin:5px 0; }
-.report-visual-head .muted { margin:4px 0 0; }
-.report-view-switch { display:flex; gap:4px; padding:4px; background:#f2f4f7; border:1px solid var(--line); border-radius:11px; }
-.report-view-switch button { padding:9px 14px; min-height:40px; border-radius:8px; background:transparent; color:#596575; font-size:14px; font-weight:700; }
-.report-view-switch button.active { background:#fff; color:#a84a1d; box-shadow:0 1px 5px rgba(20,27,36,.12); }
-.report-graph-bars, .report-share-list { display:grid; gap:14px; }
-.report-graph-bar-row { display:grid; grid-template-columns:minmax(110px, 1.1fr) minmax(100px, 3fr) minmax(65px, auto); gap:12px; align-items:center; }
-.report-graph-bar-row > span { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:14px; font-weight:600; color:var(--ink); }
-.report-graph-bar-row b { text-align:right; font-size:14px; font-variant-numeric:tabular-nums; }
-.report-graph-track { height:13px; background:#edf0f3; border-radius:99px; overflow:hidden; }
-.report-graph-track i { display:block; height:100%; background:#d66b2d; border-radius:99px; min-width:2px; }
-.report-line-wrap { width:100%; overflow-x:auto; }
-.report-line-wrap svg { display:block; width:100%; min-width:440px; height:auto; color:#667085; }
-.report-line-wrap text { fill:currentColor; font-size:11px; }
-.report-chart-note { margin:18px 0 0; padding-top:12px; border-top:1px solid var(--line); color:var(--muted); font-size:13px; }
-.report-chart-empty { padding:18px; background:#f8fafc; border:1px solid var(--line); border-radius:10px; color:#596575; font-size:14px; }
-@media(max-width:650px) { .report-visual { padding:15px; } .report-graph-bar-row { grid-template-columns:minmax(75px,1fr) minmax(65px,1.3fr) minmax(55px,auto); gap:7px; } .report-graph-bar-row > span, .report-graph-bar-row b { font-size:12px; } .report-view-switch { width:100%; } .report-view-switch button { flex:1; } }
+/* Report view controls and lightweight charts; no additional chart dependency. */
+.reports-page { min-width: 0; }
+.report-panel { overflow: hidden; }
+.report-content-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 23px 25px 19px;
+  border-bottom: 1px solid var(--border, #e8ebf0);
+}
+.report-content-heading h3 { margin: 5px 0 3px; font-size: 20px; }
+.report-content-heading .muted { margin: 0; font-size: 14px; }
+.report-chart-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+}
+.report-view-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding: 5px;
+  border: 1px solid var(--border, #e1e5eb);
+  border-radius: 12px;
+  background: var(--surface-soft, #f7f8fa);
+}
+.report-view-btn {
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text, #263244);
+  padding: 9px 13px;
+  min-height: 42px;
+  font-size: 14px;
+  font-weight: 650;
+  cursor: pointer;
+}
+.report-view-btn:hover:not(:disabled) { background: rgba(37, 99, 235, .08); }
+.report-view-btn.active {
+  color: var(--primary, #2457c5);
+  background: #fff;
+  border-color: rgba(37, 99, 235, .25);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, .08);
+}
+.report-view-btn:disabled { opacity: .42; cursor: not-allowed; }
+.report-metric-control { display: flex; flex-direction: column; gap: 4px; min-width: 150px; }
+.report-metric-control span { font-size: 12px; font-weight: 700; color: var(--muted-text, #657184); }
+.report-metric-control select { min-width: 150px; padding: 8px 10px; border: 1px solid var(--border, #dfe4ea); border-radius: 8px; background: #fff; }
+.report-chart-area { padding: 24px 26px 22px; min-width: 0; }
+.report-chart-note { margin: 16px 0 0; color: var(--muted-text, #657184); font-size: 13px; line-height: 1.55; }
+.report-bars { display: flex; flex-direction: column; gap: 15px; min-width: 0; }
+.report-bar-row {
+  display: grid;
+  grid-template-columns: minmax(115px, 1.1fr) minmax(80px, 2fr) minmax(70px, .55fr);
+  align-items: center;
+  gap: 14px;
+}
+.report-bar-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; color: var(--text, #263244); }
+.report-bar-track { height: 17px; border-radius: 20px; background: var(--surface-soft, #edf1f6); overflow: hidden; }
+.report-bar-fill { display: block; height: 100%; min-width: 3px; border-radius: inherit; background: var(--primary, #3768d8); }
+.report-bar-value { font-size: 13px; text-align: right; white-space: nowrap; }
+.report-line-wrap { width: 100%; min-width: 0; }
+.report-line-svg { display: block; width: 100%; height: 290px; overflow: visible; }
+.report-chart-gridline { stroke: var(--border, #e5e9ef); stroke-width: 1.4; stroke-dasharray: 4 5; }
+.report-line-path { fill: none; stroke: var(--primary, #3768d8); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.report-line-point { fill: var(--primary, #3768d8); stroke: #fff; stroke-width: 2; }
+.report-line-labels, .report-line-values {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(65px, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+.report-line-labels span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; color: var(--muted-text, #657184); text-align: center; }
+.report-line-values span { font-size: 12px; font-weight: 650; text-align: center; }
+.report-pie-layout { display: grid; grid-template-columns: minmax(220px, .8fr) minmax(260px, 1.2fr); gap: 35px; align-items: center; max-width: 850px; margin: 0 auto; }
+.report-pie {
+  width: min(100%, 290px);
+  aspect-ratio: 1;
+  margin: 0 auto;
+  border-radius: 50%;
+  position: relative;
+  --report-pie-1: #3569d4; --report-pie-2: #16a085; --report-pie-3: #e59b35;
+  --report-pie-4: #9165c7; --report-pie-5: #df6574; --report-pie-6: #459bb5;
+  --report-pie-7: #7b8a45; --report-pie-8: #64748b;
+}
+.report-pie-hole {
+  position: absolute; inset: 25%; border-radius: 50%; background: var(--panel, #fff);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, .05);
+}
+.report-pie-hole b { font-size: 19px; }
+.report-pie-hole span { font-size: 12px; color: var(--muted-text, #657184); }
+.report-pie-legend { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.report-pie-legend-item { display: grid; grid-template-columns: 13px minmax(70px, 1fr) auto auto; align-items: center; gap: 10px; font-size: 13px; }
+.report-pie-legend-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.report-pie-legend-item b { white-space: nowrap; }
+.report-pie-legend-item small { color: var(--muted-text, #657184); min-width: 48px; text-align: right; font-size: 12px; }
+.report-pie-swatch { width: 12px; height: 12px; border-radius: 4px; }
+.report-pie-swatch-1 { background: #3569d4; } .report-pie-swatch-2 { background: #16a085; }
+.report-pie-swatch-3 { background: #e59b35; } .report-pie-swatch-4 { background: #9165c7; }
+.report-pie-swatch-5 { background: #df6574; } .report-pie-swatch-6 { background: #459bb5; }
+.report-pie-swatch-7 { background: #7b8a45; } .report-pie-swatch-8 { background: #64748b; }
+.report-table-wrap { padding: 0 24px 22px; }
+.report-table-wrap table { min-width: 620px; }
+.report-table-wrap th { font-size: 13px; }
+.report-table-wrap td { font-size: 14px; }
+
+@media (max-width: 900px) {
+  .report-content-heading { flex-direction: column; }
+  .report-chart-toolbar { justify-content: flex-start; width: 100%; }
+  .report-pie-layout { grid-template-columns: 1fr; gap: 25px; }
+  .report-pie { width: min(100%, 250px); }
+}
+@media (max-width: 640px) {
+  .dashboard.dashboard-v2 { gap: 18px; }
+  .dashboard-v2 .welcome-v2 { padding: 21px 19px; align-items: flex-start; flex-direction: column; }
+  .dashboard-v2 .dashboard-grid-v2 { gap: 18px; }
+  .dashboard-v2 .panel-head { padding: 19px 18px 15px; }
+  .dashboard-v2 .quick-grid-v2 { padding: 15px 17px 18px; gap: 10px; }
+  .dashboard-v2 .approval-list, .dashboard-v2 .project-list, .dashboard-v2 .activity-list { padding-left: 18px; padding-right: 18px; }
+  .dashboard-v2 .approval-row { align-items: flex-start; flex-wrap: wrap; }
+  .dashboard-v2 .action-row { width: 100%; justify-content: flex-end; }
+  .dashboard-v2 .pending-material-banner { align-items: flex-start; flex-direction: column; padding: 18px; }
+  .dashboard-v2 .dashboard-attendance { align-items: flex-start; flex-direction: column; padding: 20px; }
+  .report-content-heading { padding: 19px 17px 16px; }
+  .report-chart-toolbar { align-items: stretch; }
+  .report-view-buttons { width: 100%; }
+  .report-view-btn { flex: 1 1 calc(50% - 7px); }
+  .report-metric-control, .report-metric-control select { width: 100%; }
+  .report-chart-area { padding: 18px 16px; }
+  .report-bar-row { grid-template-columns: minmax(80px, .9fr) minmax(55px, 1.2fr) minmax(55px, .5fr); gap: 8px; }
+  .report-bar-label { font-size: 12px; }
+  .report-bar-value { font-size: 12px; }
+  .report-line-svg { height: 230px; }
+  .report-table-wrap { padding: 0 15px 17px; }
+}
+
+/* Final accessibility correction: larger typography and always-visible report controls. */
+:root { --accessibility-font-scale: 1.5; }
+body, #root { font-size: 18px; }
+.page, .dashboard, .main-content { font-size: 18px; }
+.page p, .dashboard p, .panel p, .muted { font-size: 19px !important; line-height: 1.55; }
+.eyebrow, .nav-title, .sidebar .nav-label, .sidebar small { font-size: 15px !important; }
+.nav-item, .nav-link, .sidebar button { font-size: 18px !important; min-height: 48px; }
+.topbar h1 { font-size: 27px !important; }
+.page-head h2, .welcome h2 { font-size: 36px !important; line-height: 1.2; }
+.panel h3 { font-size: 25px !important; line-height: 1.3; }
+.panel h4 { font-size: 22px !important; }
+button, .primary, .secondary, .text-btn, .tab { font-size: 18px !important; }
+input, select, textarea { font-size: 18px !important; min-height: 48px; }
+label, .form-label { font-size: 18px !important; }
+table, td { font-size: 18px !important; }
+th { font-size: 16px !important; }
+.stat-card span { font-size: 18px !important; }
+.stat-card strong { font-size: 34px !important; }
+.stat-card small { font-size: 16px !important; }
+.quick-grid button span, .project-main b, .dashboard-alert b,
+.approval-main b, .activity-row, .pending-material-banner b { font-size: 18px !important; }
+.quick-grid button, .dashboard-alert, .approval-row { line-height: 1.5; }
+.loading, .empty, .dashboard-empty { font-size: 18px !important; line-height: 1.55; }
+.count-pill { font-size: 16px !important; padding: 8px 13px; }
+.badge, .status-badge, .pill { font-size: 15px !important; }
+
+/* Keep dashboard spacing comfortable after increasing type size. */
+.dashboard.dashboard-v2 { gap: 30px; }
+.dashboard-v2 .stats-grid { gap: 22px; }
+.dashboard-v2 .dashboard-grid-v2 { gap: 24px; }
+.dashboard-v2 .panel-head { padding: 27px 29px 22px; }
+.dashboard-v2 .quick-grid-v2 { gap: 16px; padding: 24px 28px 28px; }
+.dashboard-v2 .quick-grid-v2 button { min-height: 82px; padding: 17px 19px; }
+.dashboard-v2 .dashboard-alert-list { padding: 14px 26px 24px; }
+.dashboard-v2 .dashboard-alert { padding: 17px 18px; gap: 16px; }
+.dashboard-v2 .approval-list { padding: 0 27px 26px; }
+.dashboard-v2 .approval-row { padding: 22px 0; gap: 20px; }
+.dashboard-v2 .welcome-v2 { padding: 32px 35px; }
+.dashboard-v2 .pending-material-banner { padding: 23px 28px; }
+
+/* Low-stock alert area is deliberately red-tinted to communicate urgency. */
+.dashboard-low-stock-panel {
+  background: #fff1f0 !important;
+  border: 2px solid #e6a09b !important;
+  box-shadow: 0 3px 14px rgba(180, 35, 24, .10) !important;
+}
+.dashboard-low-stock-panel .panel-head {
+  background: #fee4e2 !important;
+  border-bottom: 1px solid #efb4af !important;
+}
+.dashboard-low-stock-panel .eyebrow,
+.dashboard-low-stock-panel h3 { color: #9f211b !important; }
+.dashboard-low-stock-panel .dashboard-alert {
+  background: #fffafa !important;
+  border: 1px solid #f0c1bd !important;
+  border-radius: 12px;
+  padding: 16px 18px !important;
+}
+.dashboard-low-stock-panel .dashboard-alert svg { color: #b42318 !important; }
+.dashboard-low-stock-panel .dashboard-alert b { color: #8f1d18 !important; }
+.dashboard-low-stock-panel .dashboard-alert span { color: #7f3330 !important; }
+.dashboard-low-stock-panel .dashboard-empty {
+  background: #fffafa;
+  border-radius: 10px;
+  margin: 12px 20px 20px;
+  padding: 18px !important;
+}
+
+/* Prominent, visible graph-type controls. These rules intentionally override older tabs/buttons. */
+.reports-page .report-content-heading {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 20px !important;
+  padding: 27px 29px 23px !important;
+}
+.reports-page .report-chart-toolbar {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 100% !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+  gap: 12px !important;
+}
+.reports-page .report-view-buttons {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  padding: 9px !important;
+  width: 100% !important;
+  border: 2px solid #cbd5e1 !important;
+  border-radius: 14px !important;
+  background: #f1f5f9 !important;
+}
+.reports-page .report-view-btn {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  flex: 1 1 150px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 54px !important;
+  padding: 12px 18px !important;
+  border: 2px solid #b9c5d4 !important;
+  border-radius: 11px !important;
+  background: #fff !important;
+  color: #263548 !important;
+  font-size: 18px !important;
+  font-weight: 750 !important;
+  cursor: pointer !important;
+}
+.reports-page .report-view-btn.active {
+  background: #174ea6 !important;
+  color: #fff !important;
+  border-color: #174ea6 !important;
+  box-shadow: 0 2px 6px rgba(23, 78, 166, .25) !important;
+}
+.reports-page .report-view-btn:disabled {
+  background: #e2e8f0 !important;
+  color: #64748b !important;
+  border-color: #cbd5e1 !important;
+  opacity: .7 !important;
+  cursor: not-allowed !important;
+}
+.reports-page .report-metric-control { font-size: 16px !important; }
+.reports-page .report-metric-control span { font-size: 16px !important; }
+.reports-page .report-metric-control select { min-height: 50px; font-size: 18px !important; }
+.reports-page .report-chart-area { padding: 28px 30px 26px; }
+.reports-page .report-chart-note { font-size: 16px !important; }
+.reports-page .report-bar-label, .reports-page .report-bar-value { font-size: 16px !important; }
+.reports-page .report-bar-track { height: 22px; }
+.reports-page .report-line-labels span, .reports-page .report-line-values span { font-size: 14px !important; }
+.reports-page .report-pie-legend-item { font-size: 16px !important; }
+.reports-page .report-pie-legend-item small { font-size: 14px !important; }
+
+@media (max-width: 900px) {
+  .dashboard.dashboard-v2 { gap: 23px; }
+  .reports-page .report-content-heading { padding: 22px 20px 19px !important; }
+}
+@media (max-width: 640px) {
+  body, #root { font-size: 16px; }
+  .page, .dashboard { font-size: 16px; }
+  .page p, .dashboard p, .panel p, .muted { font-size: 17px !important; }
+  .page-head h2, .welcome h2 { font-size: 30px !important; }
+  .panel h3 { font-size: 22px !important; }
+  button, .primary, .secondary, .text-btn, .tab,
+  input, select, textarea, label { font-size: 16px !important; }
+  table, td { font-size: 16px !important; }
+  th { font-size: 14px !important; }
+  .dashboard.dashboard-v2 { gap: 19px; }
+  .dashboard-v2 .panel-head { padding: 20px 18px 17px; }
+  .dashboard-v2 .quick-grid-v2 { padding: 17px 18px 20px; gap: 12px; }
+  .dashboard-v2 .dashboard-alert-list { padding: 12px 15px 18px; }
+  .dashboard-v2 .approval-list { padding: 0 18px 20px; }
+  .dashboard-v2 .welcome-v2 { padding: 23px 20px; }
+  .reports-page .report-view-btn { flex: 1 1 calc(50% - 10px) !important; min-width: 0; }
+  .reports-page .report-content-heading { padding: 18px 15px 16px !important; }
+  .reports-page .report-chart-area { padding: 18px 15px; }
+}
